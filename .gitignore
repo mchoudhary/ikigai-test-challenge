@@ -2,5 +2,14 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/mchoudhary.ikigai.codingtest/.vs/mchoudhary.ikigai.codingtest/v16
-/.vs
+.vs/
+bin/
+obj/
+Debug/
+Release/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+/src/.idea
+/src/app.py
