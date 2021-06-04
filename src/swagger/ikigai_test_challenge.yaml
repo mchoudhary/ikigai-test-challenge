@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: "Ikigai Test Challenge API"
+  description: "RESTful service for Ikigai Test Challenge"
+  version: "1.0"
+servers:
+  - url: http://localhost:{port}/{basePath}  # NOTE: using port 8080 defaults to https, but use http anyway
+    description: DEV server
+    variables:
+      basePath:
+        default: ikigai-test-challenge/api/v1
+      port:
+        default: '8080'
+components:
+  parameters:
+    ticker:
+      name: ticker
+      in: query
+      schema:
+        type: string
+      x-example: 'btcusd, ethusd'
+    exchange:
+      name: exchange
+      in: query
+      schema:
+        type: string
+      x-example: 'bitstamp'
+paths:
+  /timeseries/get-daily-historical-ohlcv-data:
+    parameters:
+      - $ref: '#/components/parameters/ticker'
+      - $ref: '#/components/parameters/exchange'
+    get:
+      operationId: api_gateway.get_historical_ohlcv_prices
+      summary: 'Gets Historical OHLCV Data for a given Ticker and Exchange'
+      tags:
+        - timeseries
+      responses:
+        '200':
+          description: 'Get Daily Historical OHLCV'

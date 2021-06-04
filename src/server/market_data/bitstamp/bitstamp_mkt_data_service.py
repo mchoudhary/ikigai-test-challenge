@@ -12,7 +12,7 @@ class BitstampMktDataService(object):
     """
 
     @inject.autoparams("mkt_data_connector")
-    def get_historical_ohlc_data(self, ticker: str, mkt_data_connector: BitstampMktDataConnector) -> DataFrame:
+    def get_historical_ohlc_prices(self, ticker: str, mkt_data_connector: BitstampMktDataConnector) -> DataFrame:
         log.info(f"Beginning load of Bitstamp OHLCV data through Market Data Service for ticker = {ticker}")
         df_ohlcv = mkt_data_connector.get_historical_daily_ohlc_prices(ticker=ticker)
         log.info(f"Completed load of Bitstamp OHLCV data through Market Data Service for ticker = {ticker}")
