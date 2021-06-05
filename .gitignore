@@ -15,3 +15,5 @@ _ReSharper.*/
 /src/app.py
 /server/.idea
 *__pycache__*
+/server/ikigai_test_challenge_api.egg-info
+/server/dist
