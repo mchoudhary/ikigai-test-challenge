@@ -14,3 +14,4 @@ _ReSharper.*/
 /src/.idea
 /src/app.py
 /server/.idea
+*__pycache__*
