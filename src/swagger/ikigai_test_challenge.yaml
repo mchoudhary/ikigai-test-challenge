@@ -26,7 +26,7 @@ components:
         type: string
       x-example: 'bitstamp'
 paths:
-  /timeseries/get-daily-historical-ohlcv-data:
+  /timeseries/get-historical-daily-ohlcv-data:
     parameters:
       - $ref: '#/components/parameters/ticker'
       - $ref: '#/components/parameters/exchange'

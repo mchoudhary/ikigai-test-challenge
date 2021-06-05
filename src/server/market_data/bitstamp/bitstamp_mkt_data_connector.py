@@ -57,6 +57,8 @@ class BitstampMktDataConnector():
 
             log.info(f"Completed load of Bitstamp OHLCV data for ticker = {ticker} starting at start_date = {start_date} ...")
             df_ohlcv = df_ohlcv[['timestamp', 'open', 'high', 'low', 'close', 'volume']]
+        else:
+            raise Exception(f"Data for {ticker} from Bitstamp exchange is currently not available")
 
         return df_ohlcv
 
