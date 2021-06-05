@@ -1,4 +1,4 @@
-from server.market_data.bitstamp.bitstamp_mkt_data_connector import BitstampMktDataConnector
+from market_data.bitstamp.bitstamp_mkt_data_connector import BitstampMktDataConnector
 import inject
 from pandas import DataFrame, to_datetime
 import logging

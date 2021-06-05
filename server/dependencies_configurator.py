@@ -1,7 +1,7 @@
 import logging
 from config.app_config import AppConfig
-from server.market_data.bitstamp.bitstamp_mkt_data_connector import BitstampMktDataConnector
-from server.market_data.bitstamp.bitstamp_mkt_data_service import BitstampMktDataService
+from market_data.bitstamp.bitstamp_mkt_data_connector import BitstampMktDataConnector
+from market_data.bitstamp.bitstamp_mkt_data_service import BitstampMktDataService
 
 
 log = logging.getLogger('dependency-bootstrapper')

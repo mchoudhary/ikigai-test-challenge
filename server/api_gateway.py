@@ -1,7 +1,7 @@
 import json
 
 import inject
-from server.market_data.bitstamp.bitstamp_mkt_data_service import BitstampMktDataService
+from market_data.bitstamp.bitstamp_mkt_data_service import BitstampMktDataService
 import logging
 
 log = logging.getLogger('api-gateway')

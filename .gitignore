@@ -13,3 +13,4 @@ _ReSharper.*/
 *.sdf
 /src/.idea
 /src/app.py
+/server/.idea
