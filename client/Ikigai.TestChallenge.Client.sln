@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikigai.TestChallenge.Client.App", "Ikigai.TestChallenge.Client.App\Ikigai.TestChallenge.Client.App.csproj", "{CB10A57F-247C-4D22-847E-E7BED53617EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB10A57F-247C-4D22-847E-E7BED53617EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB10A57F-247C-4D22-847E-E7BED53617EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB10A57F-247C-4D22-847E-E7BED53617EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB10A57F-247C-4D22-847E-E7BED53617EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2FEA801-5E95-44D5-B138-89EBFFE6C883}
+	EndGlobalSection
+EndGlobal
