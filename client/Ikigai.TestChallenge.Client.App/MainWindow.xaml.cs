@@ -10,8 +10,7 @@ namespace Ikigai.TestChallenge.Client.App
         {
             InitializeComponent();
 
-            TimeseriesApiConnector connector = new TimeseriesApiConnector();
-            Task task = connector.GetHistoricalDailyOhlcvDataAsync("btcusd", "bitstamp");
+            Task task = TimeseriesApiConnector.GetBistampHistoricalDailyOhlcvData("btcusd", "bitstamp");
         }
     }
 }

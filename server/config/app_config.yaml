@@ -4,7 +4,7 @@ market_data_connection_settings:
     tickers:
       btcusd:
         symbol: btcusd
-        start_date: '2012-01-01'
+        start_date: '2011-01-01'
     request_urls:
       ohlc:
         endpoint: ohlc/
@@ -19,3 +19,29 @@ market_data_connection_settings:
           limit:
             name: limit
             description: Limit ohlc results (min - 1, max - 1000)
+
+static_data:
+  btc_halvings:
+    display_name: BTC Halvings
+    dates:
+      - display_name: btc_halving_1st
+        date: '2012-11-28'
+      - display_name: btc_halving_2nd
+        date: '2016-7-9'
+      - display_name: btc_halving_3rd
+        date: '2020-5-11'
+  btc_bull_cycles:
+    display_name: BTC-USD Bull Cycles
+    cycles:
+      - display_name: btc_run_2011-2013
+        start_date: '2011-10-21'
+        end_date: '2013-04-10'
+        is_current: 'False'
+      - display_name: btc_run_2014-2017
+        start_date: '2015-01-14'
+        end_date: '2017-12-17'
+        is_current: 'False'
+      - display_name: btc_run_2018-Present
+        start_date: '2018-12-15'
+        end_date: '2021-11-01'
+        is_current: 'True'

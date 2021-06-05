@@ -38,3 +38,12 @@ paths:
       responses:
         '200':
           description: 'Get Daily Historical OHLCV'
+  /analysis/days-from-btc-halvings:
+    get:
+      operationId: api_gateway.days_from_btc_halvings_analysis
+      summary: 'Gets days from cycle low -> halving -> cycle top in different bull runs'
+      tags:
+        - analysis
+      responses:
+        '200':
+          description: 'Gets days from cycle low -> halving -> cycle top in different bull runs'
