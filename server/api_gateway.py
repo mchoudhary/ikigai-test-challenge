@@ -12,8 +12,7 @@ log = logging.getLogger('api-gateway')
 def get_historical_ohlcv_prices(ticker: str, exchange: str):
     mkt_data_service = __get_exchange_mkt_data_service(exchange=exchange)
     df_data = mkt_data_service.get_historical_ohlc_prices(ticker=ticker)
-    df_data['date'] = df_data['date'].dt.strftime('%Y-%m-%d')
-    return df_data.to_json(orient='records').replace('None', 'null')
+    return df_data.to_json(orient='records')
 
 
 def __get_exchange_mkt_data_service(exchange: str):
