@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 import requests
-from pandas import DataFrame, Period, json_normalize, to_datetime
+from pandas import DataFrame, Period, json_normalize, to_numeric
 from config.app_config import AppConfig
 import inject
 import time
@@ -27,7 +27,7 @@ class BitstampMktDataConnector():
             symbol = ticker_config.symbol
 
             if 'start_date' in ticker_config:
-                start_date = datetime.strptime(ticker_config.start_date, '%Y-%m-%d')
+                start_date = ticker_config.start_date
 
             date_range = list(rrule.rrule(rrule.YEARLY, byyearday=1, dtstart=start_date, until=datetime.today().date()))
 
@@ -57,6 +57,7 @@ class BitstampMktDataConnector():
 
             log.info(f"Completed load of Bitstamp OHLCV data for ticker = {ticker} starting at start_date = {start_date} ...")
             df_ohlcv = df_ohlcv[['timestamp', 'open', 'high', 'low', 'close', 'volume']]
+            df_ohlcv[['open', 'high', 'low', 'close', 'volume']] = df_ohlcv[['open', 'high', 'low', 'close', 'volume']].apply(to_numeric)
         else:
             raise Exception(f"Data for {ticker} from Bitstamp exchange is currently not available")
 

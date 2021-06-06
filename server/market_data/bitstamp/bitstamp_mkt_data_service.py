@@ -18,7 +18,7 @@ class BitstampMktDataService(object):
         if self.df_ohlcv.empty:
             self.df_ohlcv = mkt_data_connector.get_historical_daily_ohlc_prices(ticker=ticker)
             self.df_ohlcv.rename(columns={'timestamp': 'date'}, inplace=True)
-            self.df_ohlcv["date"] = to_datetime(self.df_ohlcv["date"], unit="s")
+            self.df_ohlcv["date"] = to_datetime(self.df_ohlcv["date"], unit="s").dt.date
 
         log.info(f"Completed load of Bitstamp OHLCV data through Market Data Service for ticker = {ticker}")
         return self.df_ohlcv.copy(deep=False)

@@ -1,5 +1,4 @@
-﻿using Ikigai.TestChallenge.Client.App.DataService;
-using System.Threading.Tasks;
+﻿using Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings;
 using System.Windows;
 
 namespace Ikigai.TestChallenge.Client.App
@@ -10,7 +9,7 @@ namespace Ikigai.TestChallenge.Client.App
         {
             InitializeComponent();
 
-            Task task = TimeseriesApiConnector.GetBistampHistoricalDailyOhlcvData("btcusd", "bitstamp");
+            DaysFromBtcHalvingsViewModel vm = new DaysFromBtcHalvingsViewModel();
         }
     }
 }
