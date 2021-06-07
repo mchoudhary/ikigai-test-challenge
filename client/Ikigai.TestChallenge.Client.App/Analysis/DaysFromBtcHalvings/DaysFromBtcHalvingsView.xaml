@@ -38,49 +38,5 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<ig:XamDataChart x:Name="chart_BullRun1st" Grid.Column="0" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
-            <ig:XamDataChart.Axes>
-                <ig:NumericXAxis x:Name="customXAxisDays_BullRun1st" MinimumValue="-360" MaximumValue="360" Interval="120"/>
-                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun1st" ScaleMode="Logarithmic" MinimumValue="0">
-                    <ig:PercentChangeYAxis.LabelSettings>
-                        <ig:AxisLabelSettings Location="OutsideRight"/>
-                    </ig:PercentChangeYAxis.LabelSettings>
-                </ig:PercentChangeYAxis>
-            </ig:XamDataChart.Axes>
-            <ig:XamDataChart.Series>
-                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun1st}" Value="0" Thickness="3" />
-                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
-            </ig:XamDataChart.Series>
-        </ig:XamDataChart>
-
-        <ig:XamDataChart x:Name="chart_BullRun2nd" Grid.Column="1" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
-            <ig:XamDataChart.Axes>
-                <ig:NumericXAxis x:Name="customXAxisDays_BullRun2nd" MinimumValue="-360" MaximumValue="360" Interval="120"/>
-                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun2nd" ScaleMode="Logarithmic" LogarithmBase="2" MinimumValue="0">
-                    <ig:PercentChangeYAxis.LabelSettings>
-                        <ig:AxisLabelSettings Location="OutsideRight"/>
-                    </ig:PercentChangeYAxis.LabelSettings>
-                </ig:PercentChangeYAxis>
-            </ig:XamDataChart.Axes>
-            <ig:XamDataChart.Series>
-                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun2nd}" Value="0" Thickness="3" />
-                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
-            </ig:XamDataChart.Series>
-        </ig:XamDataChart>
-
-        <ig:XamDataChart x:Name="chart_BullRun3rd" Grid.Column="2" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
-            <ig:XamDataChart.Axes>
-                <ig:NumericXAxis x:Name="customXAxisDays_BullRun3rd" MinimumValue="-360" MaximumValue="360" Interval="120"/>
-                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun3rd" ScaleMode="Logarithmic" LogarithmBase="2" MinimumValue="0">
-                    <ig:PercentChangeYAxis.LabelSettings>
-                        <ig:AxisLabelSettings Location="OutsideRight"/>
-                    </ig:PercentChangeYAxis.LabelSettings>
-                </ig:PercentChangeYAxis>
-            </ig:XamDataChart.Axes>
-            <ig:XamDataChart.Series>
-                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun3rd}" Value="0" Thickness="3" />
-                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
-            </ig:XamDataChart.Series>
-        </ig:XamDataChart>-->
     </Grid>
 </UserControl>

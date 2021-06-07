@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings.DaysFromBtcHalvingChartControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings" xmlns:ig="http://schemas.infragistics.com/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ig:XamDataChart x:Name="chart_BullRun" Grid.Column="0" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
+            <ig:XamDataChart.Axes>
+                <ig:NumericXAxis x:Name="customXAxisDays_BullRun" MinimumValue="-360" MaximumValue="360" Interval="120"/>
+                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun" ScaleMode="Logarithmic" MinimumValue="0">
+                    <ig:PercentChangeYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideRight"/>
+                    </ig:PercentChangeYAxis.LabelSettings>
+                </ig:PercentChangeYAxis>
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series>
+                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun}" Value="0" Thickness="3" />
+                <ig:CrosshairLayer IsAxisAnnotationEnabled="True" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>
+    </Grid>
+</UserControl>

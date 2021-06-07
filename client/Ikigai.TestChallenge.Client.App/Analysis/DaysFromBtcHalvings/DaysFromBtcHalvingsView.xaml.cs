@@ -51,7 +51,8 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
                 PercentChangeYAxis yAxis = new PercentChangeYAxis
                 {
                     ScaleMode = NumericScaleMode.Logarithmic,
-                    MinimumValue = 0
+                    MinimumValue = 0,
+                    LabelSettings = new AxisLabelSettings() { Location = AxisLabelsLocation.OutsideRight }
                 };
 
                 bullRunChart.Axes.Add(xAxis);
@@ -71,7 +72,23 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
                     IsHighlightingEnabled = false
                 };
 
+                ValueOverlay valOverlay = new ValueOverlay()
+                {
+                    IsAxisAnnotationEnabled = true,
+                    Axis = xAxis,
+                    Value = 0,
+                    Thickness = 3
+                };
+
+                CrosshairLayer crosshair = new CrosshairLayer()
+                {
+                    IsAxisAnnotationEnabled = true
+                };
+                
                 bullRunChart.Series.Add(lineSeries);
+                bullRunChart.Series.Add(valOverlay);
+                //bullRunChart.Series.Add(crosshair);
+
                 LayoutRoot.Children.Add(bullRunChart);
             }
         }
