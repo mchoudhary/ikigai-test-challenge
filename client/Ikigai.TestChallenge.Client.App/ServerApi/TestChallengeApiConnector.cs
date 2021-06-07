@@ -7,6 +7,11 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Ikigai.TestChallenge.Client.App.ServerApi.Entites;
 using Newtonsoft.Json;
+using Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings;
+using System.Dynamic;
+using Nancy.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 
 namespace Ikigai.TestChallenge.Client.App.ServerApi
 {
@@ -22,7 +27,26 @@ namespace Ikigai.TestChallenge.Client.App.ServerApi
             string endpoint = ConfigurationManager.AppSettings["DaysFromBtcHalvingsAnalysisEndpoint"];
 
             string strAnalysisModel = JsonConvert.DeserializeObject<object>(await GetRequest(apiUrl: apiUrl, endpoint: endpoint)).ToString();
-            return JsonConvert.DeserializeObject<DaysFromBtcHalvingsAnalysisModel>(strAnalysisModel);
+            DaysFromBtcHalvingsAnalysisModel model = JsonConvert.DeserializeObject<DaysFromBtcHalvingsAnalysisModel>(strAnalysisModel);
+
+            for (int i = 0; i < model.ohlcv_data.Count; i++)
+            {
+                model.ohlcv_data[i] = ConvertToDynamic(model.ohlcv_data[i]);
+            }
+
+            return model;
+        }
+
+        private static dynamic ConvertToDynamic(dynamic data)
+        {
+            Dictionary<string, object> dict_kvps = data.ToObject<IDictionary<string, object>>();
+            IDictionary<string, object> eo = new ExpandoObject();
+            foreach (var kvp in dict_kvps)
+            {
+                eo[kvp.Key] = kvp.Value;
+            }
+
+            return eo as dynamic;
         }
 
         /// <summary>
@@ -46,12 +70,12 @@ namespace Ikigai.TestChallenge.Client.App.ServerApi
                                                   .Select(line => line.Split(','))
                                                   .Select(x => new OhlcvTick
                                                   {
-                                                      Date = DateTime.Parse(x[0]),
-                                                      Open = decimal.Parse(x[1]),
-                                                      High = decimal.Parse(x[2]),
-                                                      Low = decimal.Parse(x[3]),
-                                                      Close = decimal.Parse(x[4]),
-                                                      Volume = decimal.Parse(x[5]),
+                                                      date = DateTime.Parse(x[0]),
+                                                      open = decimal.Parse(x[1]),
+                                                      high = decimal.Parse(x[2]),
+                                                      low = decimal.Parse(x[3]),
+                                                      close = decimal.Parse(x[4]),
+                                                      volume = decimal.Parse(x[5]),
 
                                                   }).ToList();
 

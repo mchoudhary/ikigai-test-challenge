@@ -1,13 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
-using System.Threading.Tasks;
 
 namespace Ikigai.TestChallenge.Client.App.Common
 {
     public abstract class AnalysisViewModelBase: ViewModelBase
     {
-        public IAnalysisDataModelBase DataModel { get; set; }
+        public IAnalysisDataModel DataModel { get; set; }
         public RelayCommand<string> ExportChartDataCommand { get; }
 
         protected AnalysisViewModelBase()

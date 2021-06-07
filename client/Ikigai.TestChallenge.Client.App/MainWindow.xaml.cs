@@ -8,8 +8,6 @@ namespace Ikigai.TestChallenge.Client.App
         public MainWindow()
         {
             InitializeComponent();
-
-            DaysFromBtcHalvingsViewModel vm = new DaysFromBtcHalvingsViewModel();
         }
     }
 }

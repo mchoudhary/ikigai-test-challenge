@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings.DaysFromBtcHalvingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings"
+             xmlns:ig="http://schemas.infragistics.com/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="customLegendItemTemplate">
+                <StackPanel Orientation="Horizontal" Margin="1" Visibility="{Binding Series.Visibility}" Opacity="{Binding Series.Opacity}">
+                    <ContentPresenter Content="{Binding}" ContentTemplate="{Binding Series.LegendItemBadgeTemplate}" />
+                    <ContentPresenter Content="{Binding Series.Title, TargetNullValue=Series Title}" />
+                </StackPanel>
+            </DataTemplate>
+
+            <Style x:Key="customSeriesStyle" TargetType="ig:Series">
+                <Style.Setters>
+                    <Setter Property="Opacity" Value=".3" />
+                    <Setter Property="LegendItemTemplate" Value="{StaticResource customLegendItemTemplate}" />
+                    <Setter Property="Thickness" Value="2" />
+                </Style.Setters>
+            </Style>
+
+            <Style TargetType="{x:Type ig:Legend}">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+       </UserControl.Resources>
+        <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--<ig:XamDataChart x:Name="chart_BullRun1st" Grid.Column="0" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
+            <ig:XamDataChart.Axes>
+                <ig:NumericXAxis x:Name="customXAxisDays_BullRun1st" MinimumValue="-360" MaximumValue="360" Interval="120"/>
+                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun1st" ScaleMode="Logarithmic" MinimumValue="0">
+                    <ig:PercentChangeYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideRight"/>
+                    </ig:PercentChangeYAxis.LabelSettings>
+                </ig:PercentChangeYAxis>
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series>
+                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun1st}" Value="0" Thickness="3" />
+                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>
+
+        <ig:XamDataChart x:Name="chart_BullRun2nd" Grid.Column="1" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
+            <ig:XamDataChart.Axes>
+                <ig:NumericXAxis x:Name="customXAxisDays_BullRun2nd" MinimumValue="-360" MaximumValue="360" Interval="120"/>
+                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun2nd" ScaleMode="Logarithmic" LogarithmBase="2" MinimumValue="0">
+                    <ig:PercentChangeYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideRight"/>
+                    </ig:PercentChangeYAxis.LabelSettings>
+                </ig:PercentChangeYAxis>
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series>
+                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun2nd}" Value="0" Thickness="3" />
+                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>
+
+        <ig:XamDataChart x:Name="chart_BullRun3rd" Grid.Column="2" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
+            <ig:XamDataChart.Axes>
+                <ig:NumericXAxis x:Name="customXAxisDays_BullRun3rd" MinimumValue="-360" MaximumValue="360" Interval="120"/>
+                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun3rd" ScaleMode="Logarithmic" LogarithmBase="2" MinimumValue="0">
+                    <ig:PercentChangeYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideRight"/>
+                    </ig:PercentChangeYAxis.LabelSettings>
+                </ig:PercentChangeYAxis>
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series>
+                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun3rd}" Value="0" Thickness="3" />
+                <ig:CrosshairLayer Title="Halving" IsAxisAnnotationEnabled="True" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>-->
+    </Grid>
+</UserControl>

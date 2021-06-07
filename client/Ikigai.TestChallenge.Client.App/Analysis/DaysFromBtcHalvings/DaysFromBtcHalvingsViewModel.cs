@@ -1,14 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using Ikigai.TestChallenge.Client.App.ServerApi.Entites;
-using Ikigai.TestChallenge.Client.App.ServerApi;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GalaSoft.MvvmLight.Command;
 using Ikigai.TestChallenge.Client.App.Common;
+using Ikigai.TestChallenge.Client.App.ServerApi;
+using System;
+using System.Threading.Tasks;
 
 namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
 {
@@ -26,12 +20,11 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
         public DaysFromBtcHalvingsViewModel()
         {
             ExecuteCommand = new RelayCommand(async () => await ExecuteAsync());
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public async Task InitializeAsync()
         {
-            DaysFromBtcHalvingsAnalysisModel model = await TestChallengeApiConnector.GetDaysFromBtcHalvingsAnalysisModel();
+            DataModel = await TestChallengeApiConnector.GetDaysFromBtcHalvingsAnalysisModel();
         }
 
 

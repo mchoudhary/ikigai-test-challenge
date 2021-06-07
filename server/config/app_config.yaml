@@ -33,12 +33,12 @@ analysis_config:
   btc_bull_cycles:
     display_name: BTC-USD Bull Cycles
     cycles:
-      - display_name: btc_run_2011-2013
+      - display_name: btc_run_1st
         start_date: 2011-11-21
         end_date: 2013-11-20
-      - display_name: btc_run_2014-2017
+      - display_name: btc_run_2nd
         start_date: 2015-01-14
         end_date: 2017-12-17
-      - display_name: btc_run_2018-Present
+      - display_name: btc_run_3rd
         start_date: 2018-12-15
         end_date: 2099-01-01

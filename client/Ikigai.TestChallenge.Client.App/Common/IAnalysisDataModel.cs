@@ -2,7 +2,7 @@
 
 namespace Ikigai.TestChallenge.Client.App.Common
 {
-    public interface IAnalysisDataModelBase
+    public interface IAnalysisDataModel
     {
         public string GetChartDataForJson();
         public string GetChartDataForExcel();
