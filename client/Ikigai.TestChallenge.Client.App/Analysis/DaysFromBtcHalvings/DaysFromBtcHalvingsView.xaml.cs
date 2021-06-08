@@ -49,6 +49,8 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
 
                 LayoutRoot.Children.Add(chartControl);
             }
+
+            loadingScreen.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

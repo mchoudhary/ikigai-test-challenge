@@ -1,5 +1,4 @@
-﻿using Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Ikigai.TestChallenge.Client.App
 {

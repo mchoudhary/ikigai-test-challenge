@@ -56,7 +56,7 @@ def get_days_from_btc_halvings_analysis(df_ohlcv: DataFrame, app_config: AppConf
                                               bull_cycle_model.cycle_top_days_from_halving_actual < bull_cycle_model.cycle_top_days_from_halving_projected)
 
     if count_projected_less_than_actual > 0:
-        model.insights.append(f"- {count_projected_less_than_actual}/{len(model.bull_cycles)} times actual preceded the original projected top")
+        model.insights.append(f"- {count_projected_less_than_actual}/{len(model.bull_cycles)} times actual preceded the original projected top = abs(actual bottom days from halving)")
 
     lst_error_rates = list(abs(100* (1 - bull_cycle_model.cycle_top_days_from_halving_actual/ bull_cycle_model.cycle_top_days_from_halving_projected)) for bull_cycle_model in model.bull_cycles if not bull_cycle_model.is_current)
     model.insights.append(f"- The current delta for the number of days from halving between the projected vs actual top is around ±{round(sum(lst_error_rates) / len(lst_error_rates), 1)}")
