@@ -62,9 +62,37 @@ namespace Ikigai.TestChallenge.Client.App.Common
             return saveFileDialog;
         }
 
+        public static void WriteDataToFile(string fileName, DataSet dsToExport, string fileType)
+        {
+            switch (fileType)
+            {
+                case "excel":
+                    WriteExcelFile(fileName, dsToExport);
+                    break;
+                case "json":
+                    WriteJsonFile(fileName, dsToExport);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public static void WriteJsonFile(string fileName, DataSet dsToExport)
+        {
+            string json = JsonConvert.SerializeObject(dsToExport, Formatting.Indented);
+
+            SaveFileDialog saveFileDialog = PromptForFileSave(fileName, "json", "JSON files (*.json)|*.json");
+
+            if (saveFileDialog.ShowDialog() ?? false)
+            {
+                System.IO.File.WriteAllText(saveFileDialog.FileName, json);
+                MessageBox.Show($"The file is successfully saved to path {saveFileDialog.FileName}.", "File Saved", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+            }
+        }
+
         public static void WriteExcelFile(string fileName, DataSet dsToExport)
         {
-            SaveFileDialog saveFileDialog = PromptForFileSave(fileName, "xlsx", "Execl files (*.xlsx)|*.xlsx");
+            SaveFileDialog saveFileDialog = PromptForFileSave(fileName, "xlsx", "Excel files (*.xlsx)|*.xlsx");
 
             if (saveFileDialog.ShowDialog() ?? false)
             {
@@ -161,10 +189,7 @@ namespace Ikigai.TestChallenge.Client.App.Common
                     workbookPart.Workbook.Save();
                 }
 
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-
-                MessageBox.Show($"The file is successfully saved to path {path}.", "File Saved", button, icon, MessageBoxResult.Yes);
+                MessageBox.Show($"The file is successfully saved to path {path}.", "File Saved", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
             }
         }
 

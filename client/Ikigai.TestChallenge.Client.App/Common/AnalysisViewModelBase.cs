@@ -18,19 +18,9 @@ namespace Ikigai.TestChallenge.Client.App.Common
 
         private void ExportChartDataAsync(string exportType)
         {
-            switch (exportType)
-            {
-                case "excel":
-                    Dictionary<string, List<dynamic>> chartData = DataModel.GetChartDataForExcel();
-                    DataSet xlSheetsData = Utilities.ConvertToDataTableSet(chartData);
-                    Utilities.WriteExcelFile(Id, xlSheetsData);
-
-                    break;
-                case "json":
-                    break;
-                default:
-                    break;
-            }
+            Dictionary<string, List<dynamic>> chartData = DataModel.GetChartDataForExcel();
+            DataSet xlSheetsData = Utilities.ConvertToDataTableSet(chartData);
+            Utilities.WriteDataToFile(Id, xlSheetsData, exportType);
         }
 
     }
