@@ -46,7 +46,7 @@ namespace Ikigai.TestChallenge.Client.App.Common
             return xlSheetsData;
         }
 
-        public static SaveFileDialog PromptForFileSave(string fileName,string fileExtension,string fileTypes)
+        public static SaveFileDialog PromptForFileSave(string fileName, string fileExtension, string fileTypes)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -54,7 +54,7 @@ namespace Ikigai.TestChallenge.Client.App.Common
                 FilterIndex = 0,
                 RestoreDirectory = true,
                 CreatePrompt = true,
-                Title = "Export Excel File To",
+                Title = $"Export {fileExtension.ToUpper()} File To",
                 InitialDirectory = @"C:\",
                 FileName = $"{fileName}-{DateTime.Now:yyyyMMdd_HHmmss}.{fileExtension}"
             };
@@ -85,7 +85,7 @@ namespace Ikigai.TestChallenge.Client.App.Common
 
             if (saveFileDialog.ShowDialog() ?? false)
             {
-                System.IO.File.WriteAllText(saveFileDialog.FileName, json);
+                File.WriteAllText(saveFileDialog.FileName, json);
                 MessageBox.Show($"The file is successfully saved to path {saveFileDialog.FileName}.", "File Saved", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
             }
         }
