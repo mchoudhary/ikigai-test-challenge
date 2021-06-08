@@ -1,0 +1,1 @@
+start "" binaries/client/Ikigai.TestChallenge.Client.App.exe

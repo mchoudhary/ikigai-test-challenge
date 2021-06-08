@@ -17,3 +17,5 @@ _ReSharper.*/
 *__pycache__*
 /server/ikigai_test_challenge_api.egg-info
 /server/dist
+/ikigai_test_challenge_api.egg-info
+/dist
