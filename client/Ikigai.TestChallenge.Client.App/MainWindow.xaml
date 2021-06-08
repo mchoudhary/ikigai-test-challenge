@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Icon="logo.ico"
         xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App" xmlns:analysisControls="clr-namespace:Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" RenderOptions.ClearTypeHint="Enabled" UseLayoutRounding="True" RenderOptions.EdgeMode="Aliased">
+        mc:Ignorable="d" Background="{StaticResource appBackground}" Foreground="{StaticResource appForeground}"
+        Title="Ikigai Coding Test" Height="450" Width="800" RenderOptions.ClearTypeHint="Enabled" UseLayoutRounding="True" RenderOptions.EdgeMode="Aliased" FontFamily="Consolas">
     <Grid>
         <analysisControls:DaysFromBtcHalvingsView HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>

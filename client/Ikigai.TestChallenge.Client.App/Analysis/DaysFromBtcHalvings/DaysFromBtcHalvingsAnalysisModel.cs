@@ -12,13 +12,38 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
         public string id { get; set; }
         public string name { get; set; }
         public List<bull_cycle> bull_cycles { get; set; }
-        public metrics metrics { get; set; }
-        public List<dynamic> ohlcv_data { get; set; }
+        public List<string> insights { get; set; }
         public DateTime analysed_at_utc { get; set; }
 
-        public string GetChartDataForExcel()
+        public Dictionary<string, List<dynamic>> GetChartDataForExcel()
         {
-            throw new NotImplementedException();
+            Dictionary<string, List<dynamic>> exportedData = new Dictionary<string, List<dynamic>>();
+
+            List<dynamic> bullCycleDefinitions = new List<dynamic>();
+            List<dynamic> bullRunData = new List<dynamic>();
+
+            foreach (bull_cycle cycle in bull_cycles)
+            {
+                dynamic bullCycleDefinition = Utilities.ToDynamic(cycle);
+                ((IDictionary<string, object>)bullCycleDefinition).Remove("ohlcv_data");
+                ((IDictionary<string, object>)bullCycleDefinition).Remove("halving_date");
+                bullCycleDefinition.halving_name = cycle.halving_date.name;
+                bullCycleDefinition.halving_date = cycle.halving_date.date;
+                bullCycleDefinitions.Add(bullCycleDefinition);
+
+                foreach (ohlcv_tick tick in cycle.ohlcv_data)
+                {
+                    dynamic bullRunTick = Utilities.ToDynamic(tick);
+                    bullRunTick.cycle_id = cycle.id;
+                    bullRunData.Add(bullRunTick);
+                }
+            }
+
+
+            exportedData["Cycles Metadata"] = bullCycleDefinitions;
+            exportedData["OHLCV Data"] = bullRunData;
+
+            return exportedData;
         }
 
         public string GetChartDataForJson()
@@ -58,11 +83,5 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
         public decimal close_pct_change { get; set; }
         public int days_from_halving { get; set; }
         public bool is_halving_date { get; set; }
-}
-
-    public class metrics
-    {
-        public string cycle_where_projected_top_precede_actual { get; set; }
-        public string projected_vs_actual_days_error_rate { get; set; }
     }
 }

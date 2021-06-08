@@ -6,37 +6,59 @@
              xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings"
              xmlns:ig="http://schemas.infragistics.com/xaml"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1200" Background="White">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <DataTemplate x:Key="customLegendItemTemplate">
-                <StackPanel Orientation="Horizontal" Margin="1" Visibility="{Binding Series.Visibility}" Opacity="{Binding Series.Opacity}">
-                    <ContentPresenter Content="{Binding}" ContentTemplate="{Binding Series.LegendItemBadgeTemplate}" />
-                    <ContentPresenter Content="{Binding Series.Title, TargetNullValue=Series Title}" />
+             d:DesignHeight="600" d:DesignWidth="1200" Background="{StaticResource appBackground}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="9,9,9,0" Background="{StaticResource appPanelBackground}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="9,0,0,9">
+                    <TextBlock Text="DAYS FROM BTC HALVINGS: " Foreground="{StaticResource appForeground}"  FontWeight="Bold" VerticalAlignment="Center" FontSize="15" />
+                    <TextBlock Text="Gets days from cycle low -> halving -> cycle top in different bull runs" Foreground="DarkGray" VerticalAlignment="Center" FontSize="15"/>
                 </StackPanel>
-            </DataTemplate>
-
-            <Style x:Key="customSeriesStyle" TargetType="ig:Series">
-                <Style.Setters>
-                    <Setter Property="Opacity" Value=".3" />
-                    <Setter Property="LegendItemTemplate" Value="{StaticResource customLegendItemTemplate}" />
-                    <Setter Property="Thickness" Value="2" />
-                </Style.Setters>
-            </Style>
-
-            <Style TargetType="{x:Type ig:Legend}">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="BorderBrush" Value="Black"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Foreground" Value="Black"/>
-            </Style>
-        </ResourceDictionary>
-       </UserControl.Resources>
-        <Grid x:Name="LayoutRoot">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Export Analysis Data: " Foreground="DarkGray" VerticalAlignment="Center"/>
+                    <Border BorderBrush="{StaticResource appBackground}"  BorderThickness="0,0,2,0"/>
+                    <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0" Width="45" 
+                            Height="36" Padding="9" ToolTip="Export to Excel"
+                            Command="{Binding ExportChartDataCommand}"
+                            CommandParameter="excel">
+                        <Image Source="../../icon_excel.png"/>
+                    </Button>
+                    <Border BorderBrush="{StaticResource appBackground}"  BorderThickness="0,0,2,0"/>
+                    <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0" Width="45" 
+                            Height="36" Padding="9" ToolTip="Export to JSON"
+                            Command="{Binding ExportChartDataCommand}"
+                            CommandParameter="json">
+                        <Image Source="../../icon_json.png"/>
+                    </Button>
+                </StackPanel>
+                <Border BorderBrush="{StaticResource appBackground}" Grid.Row="1" BorderThickness="0,2,0,0" HorizontalAlignment="Stretch"/>
+                <StackPanel Grid.Row="2" Margin="9">
+                    <TextBlock Text="Insights: " VerticalAlignment="Center" FontWeight="Bold"/>
+                    <ItemsControl x:Name="listOfInsights" Margin="0,9,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center" Margin="0,9,0,0"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid x:Name="LayoutRoot" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
     </Grid>
 </UserControl>

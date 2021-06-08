@@ -9,6 +9,9 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
     public class DaysFromBtcHalvingsViewModel : AnalysisViewModelBase
     {
         private string _input;
+
+        public override string Id => "DAYS_FROM_BTC_HALVINGS_ANALYSIS";
+
         public string Input
         {
             get => _input;

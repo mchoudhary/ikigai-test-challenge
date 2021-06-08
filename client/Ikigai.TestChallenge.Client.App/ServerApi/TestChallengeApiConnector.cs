@@ -29,11 +29,6 @@ namespace Ikigai.TestChallenge.Client.App.ServerApi
             string strAnalysisModel = JsonConvert.DeserializeObject<object>(await GetRequest(apiUrl: apiUrl, endpoint: endpoint)).ToString();
             DaysFromBtcHalvingsAnalysisModel model = JsonConvert.DeserializeObject<DaysFromBtcHalvingsAnalysisModel>(strAnalysisModel);
 
-            for (int i = 0; i < model.ohlcv_data.Count; i++)
-            {
-                model.ohlcv_data[i] = ConvertToDynamic(model.ohlcv_data[i]);
-            }
-
             return model;
         }
 

@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
 {
     public partial class DaysFromBtcHalvingsView : UserControl
     {
-        DaysFromBtcHalvingsViewModel viewModel { get; }
+        private DaysFromBtcHalvingsViewModel viewModel { get => DataContext as DaysFromBtcHalvingsViewModel; }
 
         public DaysFromBtcHalvingsView()
         {
             InitializeComponent();
-            viewModel = new DaysFromBtcHalvingsViewModel();
+            DataContext = new DaysFromBtcHalvingsViewModel();
             Loaded += (s, e) => _= DaysFromBtcHalvingsView_LoadedAsync();
         }
 
@@ -22,6 +23,7 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
         {
             await viewModel.InitializeAsync();
             DaysFromBtcHalvingsAnalysisModel model = viewModel.DataModel as DaysFromBtcHalvingsAnalysisModel;
+            listOfInsights.ItemsSource = model.insights;
 
             for (int i = 0; i < model.bull_cycles.Count; i++)
             {
@@ -32,64 +34,20 @@ namespace Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings
 
                 int xAxisRangeNum = (int)(Math.Round((decimal)Math.Max(Math.Abs(minVal), maxVal) / 60) * 60) + 60;
 
-                XamDataChart bullRunChart = new XamDataChart
+                DaysFromBtcHalvingChartControl chartControl = new DaysFromBtcHalvingChartControl()
                 {
-                    Name = $"chart_{cycle.id}",
-                    Tag = $"chart_{cycle.id}",
-                    Margin = new System.Windows.Thickness(6)
+                    SeriesTitle = $"{cycle.name} [Bottom: {cycle.cycle_bottom_days_from_halving_actual}d | Top: {(cycle.is_current ? cycle.cycle_top_days_from_halving_projected : cycle.cycle_top_days_from_halving_actual)}d{ (cycle.is_current ? $"(Projected)" : "")}]",
+                    xAxisRange = xAxisRangeNum,
+                    OhlcData = cycle.ohlcv_data,
+                    SeriesTag = cycle.id
                 };
 
-                Grid.SetColumn(bullRunChart, i);
+                Grid.SetColumn(chartControl, i);
 
-                NumericXAxis xAxis = new NumericXAxis
-                {
-                    MinimumValue = -1 * xAxisRangeNum,
-                    MaximumValue = xAxisRangeNum,
-                    Interval = 120
-                };
+                if (i == 0)
+                    chartControl.Margin = new System.Windows.Thickness(9);
 
-                PercentChangeYAxis yAxis = new PercentChangeYAxis
-                {
-                    ScaleMode = NumericScaleMode.Logarithmic,
-                    MinimumValue = 0,
-                    LabelSettings = new AxisLabelSettings() { Location = AxisLabelsLocation.OutsideRight }
-                };
-
-                bullRunChart.Axes.Add(xAxis);
-                bullRunChart.Axes.Add(yAxis);
-
-                ScatterLineSeries lineSeries = new ScatterLineSeries
-                {
-                    ItemsSource = cycle.ohlcv_data,
-                    Thickness = 1,
-                    MarkerType = MarkerType.None,
-                    Name = $"lineSeries_{cycle.id}",
-                    Tag = cycle.id,
-                    XAxis = xAxis,
-                    YAxis = yAxis,
-                    XMemberPath = "days_from_halving",
-                    YMemberPath = "close_pct_change",
-                    IsHighlightingEnabled = false
-                };
-
-                ValueOverlay valOverlay = new ValueOverlay()
-                {
-                    IsAxisAnnotationEnabled = true,
-                    Axis = xAxis,
-                    Value = 0,
-                    Thickness = 3
-                };
-
-                CrosshairLayer crosshair = new CrosshairLayer()
-                {
-                    IsAxisAnnotationEnabled = true
-                };
-                
-                bullRunChart.Series.Add(lineSeries);
-                bullRunChart.Series.Add(valOverlay);
-                //bullRunChart.Series.Add(crosshair);
-
-                LayoutRoot.Children.Add(bullRunChart);
+                LayoutRoot.Children.Add(chartControl);
             }
         }
     }

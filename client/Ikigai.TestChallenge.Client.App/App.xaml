@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="appBackground" Color="#FF25272C"/>
+            <SolidColorBrush x:Key="appPanelBackground" Color="#FF111215"/>
+            <SolidColorBrush x:Key="appForeground" Color="#FFEBECDF"/>
+            <SolidColorBrush x:Key="appLines" Color="#FF525353"/>
+            <SolidColorBrush x:Key="chartSeriesBrush" Color="#67F9C4"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

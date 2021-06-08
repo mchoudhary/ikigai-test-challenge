@@ -5,20 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ikigai.TestChallenge.Client.App.Analysis.DaysFromBtcHalvings" xmlns:ig="http://schemas.infragistics.com/xaml"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="{StaticResource appPanelBackground}" Margin="0,9,9,9">
     <Grid>
-        <ig:XamDataChart x:Name="chart_BullRun" Grid.Column="0" Margin="12" BorderBrush="LightGray" BorderThickness="0.6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="White"  BorderThickness="6,0,0,0" >
+            <TextBlock Grid.Row="0" x:Name="txtTitle" Text="Chart Title" Margin="12" VerticalAlignment="Center" FontSize="15" Foreground="{StaticResource appForeground}"/>
+        </Border>
+        <ig:XamDataChart x:Name="chart_BullRun" Grid.Row="1" Margin="12" Foreground="{StaticResource appForeground}" FontFamily="Consolas" Background="{StaticResource appPanelBackground}">
             <ig:XamDataChart.Axes>
-                <ig:NumericXAxis x:Name="customXAxisDays_BullRun" MinimumValue="-360" MaximumValue="360" Interval="120"/>
-                <ig:PercentChangeYAxis x:Name="customYAxisPctChange_BullRun" ScaleMode="Logarithmic" MinimumValue="0">
-                    <ig:PercentChangeYAxis.LabelSettings>
-                        <ig:AxisLabelSettings Location="OutsideRight"/>
-                    </ig:PercentChangeYAxis.LabelSettings>
-                </ig:PercentChangeYAxis>
+                <ig:NumericXAxis x:Name="customXAxisDays_BullRun" MinimumValue="-360" MaximumValue="360" Interval="120">
+                    <ig:NumericXAxis.LabelSettings>
+                        <ig:AxisLabelSettings Foreground="{StaticResource appForeground}" FontFamily="Consolas" />
+                    </ig:NumericXAxis.LabelSettings>
+                </ig:NumericXAxis>
+                <ig:NumericYAxis x:Name="customYAxisPrice_BullRun" ScaleMode="Logarithmic" IsLogarithmic="True" LogarithmBase="2" Label="${0:#,###}">
+                    <ig:NumericYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideRight" Foreground="{StaticResource appForeground}" FontFamily="Consolas"/>
+                    </ig:NumericYAxis.LabelSettings>
+                </ig:NumericYAxis>
             </ig:XamDataChart.Axes>
             <ig:XamDataChart.Series>
-                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun}" Value="0" Thickness="3" />
-                <ig:CrosshairLayer IsAxisAnnotationEnabled="True" />
+                <ig:ScatterLineSeries x:Name="lineBullRun"
+                               MarkerType="None" Thickness="1"
+                               Brush="{StaticResource chartSeriesBrush}"
+                               XAxis="{Binding ElementName=customXAxisDays_BullRun}"
+                               YAxis="{Binding ElementName=customYAxisPrice_BullRun}"
+                               XMemberPath="days_from_halving" YMemberPath="close"
+                               IsHighlightingEnabled="False"/>
+                <ig:ValueOverlay IsAxisAnnotationEnabled="True" Axis="{Binding ElementName=customXAxisDays_BullRun}" Value="0" Brush="#FA676C" Thickness="3" />
             </ig:XamDataChart.Series>
         </ig:XamDataChart>
     </Grid>

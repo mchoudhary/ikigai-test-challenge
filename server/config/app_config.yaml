@@ -35,7 +35,7 @@ analysis_config:
     cycles:
       - display_name: btc_run_1st
         start_date: 2011-11-21
-        end_date: 2013-11-20
+        end_date: 2013-11-29
       - display_name: btc_run_2nd
         start_date: 2015-01-14
         end_date: 2017-12-17
