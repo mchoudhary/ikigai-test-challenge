@@ -20,3 +20,9 @@ You should see 'Running on http://192.168.1.161:8080/ (Press CTRL+C to quit)' wh
 1.3 - Confirming the API: Please navigate to the following URL in your browser and confirm you are able to see the Swagger UI with the 2 endpoints
 
 #### navigate to http://localhost:8080/ikigai-test-challenge/api/v1/ui/ to confirm
+
+## 2. Launching the Client App:
+
+2.1 - This will run the client WPF App exe file. Once loaded it should show a dark loading screen which shortly switches to the chart:
+
+#### run_client.bat
