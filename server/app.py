@@ -13,7 +13,8 @@ app = connexion.FlaskApp('ikigai-test-challenge-api')
 if __name__ == '__main__':
     inject.configure(configure_dependencies)
     log.info(f'Running API')
-
+    
+    # Initializing ohlcv cache to speed things up
     mkt_data_service = inject.instance(BitstampMktDataService)
     mkt_data_service.get_historical_ohlc_prices(ticker='btcusd')
 
