@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Dynamic;
 using System.IO;
+using System.Windows;
 
 namespace Ikigai.TestChallenge.Client.App.Common
 {
@@ -159,6 +160,11 @@ namespace Ikigai.TestChallenge.Client.App.Common
                     }
                     workbookPart.Workbook.Save();
                 }
+
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+
+                MessageBox.Show($"The file is successfully saved to path {path}.", "File Saved", button, icon, MessageBoxResult.Yes);
             }
         }
 
